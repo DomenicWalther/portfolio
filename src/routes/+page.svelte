@@ -6,7 +6,6 @@
   const imageURL = "/images/background-image.jpg";
 
   const carouselText = [
-    "I'm Domenic",
     "A Full-Stack Developer",
     "A Photographer",
     "A Inquisitive",
@@ -23,15 +22,18 @@
   <img src={imageURL} alt="" class="absolute h-full w-full object-cover" />
   <div class="screen-overlay" />
   <div
-    class="text-white text-6xl z-10 md:text-7xl leading-none absolute left-20 lg:left-40 top-80 typing-container text-shadow"
+    class="text-white font-bold text-4xl z-10 md:text-3xl leading-none absolute left-20 lg:left-40 top-80 typing-container"
   >
     <span
       id="sentence"
-      class="sentence interactable"
+      class="sentence interactable text-xl"
       data-value="Hello,"
-      on:mouseover={(e) => HackerText(e)}>Hello,</span
+      on:mouseover={(e) => HackerText(e)}>Hi, I am</span
     ><br />
-    <span id="feature-text" />
+    <p>
+      <span>Domenic Walther.</span><span class="wave">👋</span>
+    </p>
+    <span id="feature-text" class="text-xl" />
     <span class="input-cursor" />
   </div>
 </div>
@@ -44,6 +46,14 @@
 
   .text-shadow {
     text-shadow: 0px 0px 0.5rem white;
+  }
+
+  .wave {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
   }
 
   .screen-overlay {
@@ -65,7 +75,7 @@
   .input-cursor {
     display: inline-block;
     width: 2px;
-    height: 3.75rem;
+    height: 1.25rem;
     background-color: white;
     margin-left: 8px;
     animation: blink 0.6s linear infinite alternate;
@@ -93,6 +103,33 @@
 
     to {
       background-position: 0% -100%;
+    }
+  }
+
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
     }
   }
 </style>
