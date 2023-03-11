@@ -27,7 +27,7 @@
   >
     <span
       id="sentence"
-      class="sentence"
+      class="sentence interactable"
       data-value="Hello,"
       on:mouseover={(e) => HackerText(e)}>Hello,</span
     ><br />
