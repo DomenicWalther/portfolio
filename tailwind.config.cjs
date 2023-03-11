@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        maindark: "#141723",
+        maindark: "#000212",
       },
     },
   },

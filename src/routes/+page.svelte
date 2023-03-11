@@ -1,5 +1,7 @@
 <script>
   import { onMount } from "svelte";
+  import HackerText from "$lib/utils/HackerText";
+  import carousel from "$lib/utils/Typewriter";
 
   const imageURL = "/images/background-image.jpg";
 
@@ -15,74 +17,20 @@
     const eleRef = document.getElementById("feature-text");
     await carousel(carouselText, eleRef);
   });
-
-  async function typeSentence(sentence, eleRef, delay = 100) {
-    const letters = sentence.split("");
-    let i = 0;
-    while (i < letters.length) {
-      await waitForMs(delay);
-      eleRef.textContent += letters[i];
-      i++;
-    }
-    return;
-  }
-
-  async function deleteSentence(eleRef) {
-    const sentence = eleRef.textContent;
-    const letters = sentence.split("");
-    let i = 0;
-    while (letters.length > 0) {
-      await waitForMs(50);
-      letters.pop();
-      eleRef.textContent = letters.join("");
-    }
-  }
-
-  async function carousel(carouselList, eleRef) {
-    var i = 0;
-    while (true) {
-      await typeSentence(carouselList[i], eleRef);
-      await waitForMs(1500);
-      await deleteSentence(eleRef);
-      await waitForMs(500);
-      i++;
-      if (i >= carouselList.length) {
-        i = 0;
-      }
-    }
-  }
-
-  function waitForMs(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
 </script>
 
 <div class="z-10 flex min-h-screen flex-col items-center justify-center">
-  <nav class="z-20 absolute top-10 left-40 text-shadow">
-    <ul class="flex justify-center">
-      <li class="mr-6">
-        <a href="#" class="text-white hover:text-purple-300 transition-colors"
-          >00 Home</a
-        >
-      </li>
-      <li class="mr-6">
-        <a href="#" class="text-white hover:text-purple-300 transition-colors"
-          >01 About</a
-        >
-      </li>
-      <li class="mr-6">
-        <a href="#" class="text-white hover:text-purple-300 transition-colors"
-          >02 Projects</a
-        >
-      </li>
-    </ul>
-  </nav>
   <img src={imageURL} alt="" class="absolute h-full w-full object-cover" />
   <div class="screen-overlay" />
   <div
-    class="text-white text-7xl z-10 absolute left-40 top-80 typing-container text-shadow"
+    class="text-white text-6xl z-10 md:text-7xl leading-none absolute left-20 lg:left-40 top-80 typing-container text-shadow"
   >
-    <span id="sentence" class="sentence">Hello,</span><br />
+    <span
+      id="sentence"
+      class="sentence"
+      data-value="Hello,"
+      on:mouseover={(e) => HackerText(e)}>Hello,</span
+    ><br />
     <span id="feature-text" />
     <span class="input-cursor" />
   </div>
