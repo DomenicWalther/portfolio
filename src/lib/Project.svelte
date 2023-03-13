@@ -45,7 +45,7 @@
             <h3 class="font-bold">{project.name}</h3>
             <h4 class="text-base font-light">{project.description}</h4>
             <h5
-              class="text-xs whitespace-nowrap absolute bottom-1 right-5 text-gray-300"
+              class="text-xs whitespace-nowrap absolute bottom-3 right-5 text-gray-300"
             >
               Click for more Information
             </h5>

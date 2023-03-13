@@ -17,3 +17,18 @@
     </li>
   </ul>
 </nav>
+
+<style>
+  ul > li {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  ul:hover > li {
+    opacity: 0.25;
+    transition: opacity 0.5s;
+  }
+  ul > li:hover {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+</style>
