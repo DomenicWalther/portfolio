@@ -2,14 +2,13 @@
   import { onMount } from "svelte";
   import HackerText from "$lib/utils/HackerText";
   import carousel from "$lib/utils/Typewriter";
-
-  const imageURL = "/images/background-image.jpg";
+  import MagicButton from "$lib/MagicButton.svelte";
 
   const carouselText = [
-    "A Full-Stack Developer",
-    "A Photographer",
-    "A Inquisitive",
-    "A Problem Solver",
+    "Full-Stack Developer",
+    "Photographer",
+    "Inquisitive",
+    "Problem Solver",
   ];
 
   onMount(async () => {
@@ -18,34 +17,57 @@
   });
 </script>
 
-<div class="z-10 flex min-h-screen flex-col items-center justify-center">
-  <img src={imageURL} alt="" class="absolute h-full w-full object-cover" />
-  <div class="screen-overlay" />
-  <div
-    class="text-white font-bold text-4xl z-10 md:text-3xl leading-none absolute left-20 lg:left-40 top-80 typing-container"
+<div id="blur" />
+<div id="blob" />
+<section
+  class="text-white text-4xl max-w-4xl relative z-50 mx-auto my-0 flex justify-center content-start flex-col h-screen"
+>
+  <h2 class="text-green text-xl">Hi, my name is</h2>
+  <h1 class="pt-5 text-gray-200">
+    Domenic Walther. <span class="wave">👋</span>
+  </h1>
+  <span
+    >A <span id="feature-text" />
+    <div class="input-cursor" /></span
   >
-    <span
-      id="sentence"
-      class="sentence interactable text-xl"
-      data-value="Hello,"
-      on:mouseover={(e) => HackerText(e)}>Hi, I am</span
-    ><br />
-    <p>
-      <span>Domenic Walther.</span><span class="wave">👋</span>
-    </p>
-    <span id="feature-text" class="text-xl" />
-    <span class="input-cursor" />
+  <p class="text-lg text-gray-400">Some random fun text.</p>
+  <div class="pt-10">
+    <MagicButton />
   </div>
-</div>
+</section>
 
 <style lang="scss">
   :root {
     --blue-rgb: 112 41 99;
     --primary-rgb: var(--blue-rgb);
+    --purple: rgb(163, 116, 255);
+    --turquoise: rgb(23, 241, 209);
+    --yellow: rgba(255, 208, 116);
+  }
+  #blob {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
   }
 
-  .text-shadow {
-    text-shadow: 0px 0px 0.5rem white;
+  #blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    backdrop-filter: blur(12vmax);
+  }
+
+  section {
+    z-index: 10;
   }
 
   .wave {
@@ -56,29 +78,27 @@
     display: inline-block;
   }
 
-  .screen-overlay {
-    background: linear-gradient(
-      rgb(var(--primary-rgb) / 0.15),
-      rgb(var(--primary-rgb) / 0.15) 3px,
-      transparent 3px,
-      transparent 9px
-    );
-    background-size: 100% 9px;
-    height: 100%;
-    width: 100%;
-    animation: pan-overlay 20s infinite linear;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 2;
-  }
   .input-cursor {
     display: inline-block;
     width: 2px;
-    height: 1.25rem;
+    height: 2rem;
     background-color: white;
     margin-left: 8px;
+    transform: translatey(3px);
     animation: blink 0.6s linear infinite alternate;
+  }
+
+  @keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+
+    50% {
+      scale: 1 1.5;
+    }
+    to {
+      rotate: 360deg;
+    }
   }
 
   @keyframes blink {
@@ -93,16 +113,6 @@
     }
     100% {
       opacity: 0;
-    }
-  }
-
-  @keyframes pan-overlay {
-    from {
-      background-position: 0% 0%;
-    }
-
-    to {
-      background-position: 0% -100%;
     }
   }
 
