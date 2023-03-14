@@ -1,4 +1,11 @@
-<button class="magic-button text-gray900">
+<script>
+  import { scrollTo } from "svelte-scrolling";
+</script>
+
+<button
+  class="magic-button text-gray900"
+  use:scrollTo={{ ref: "work", offset: -200 }}
+>
   <span>Check out my Work</span>
   <span>Check out my Work</span>
 </button>
