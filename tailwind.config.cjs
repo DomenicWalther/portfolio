@@ -8,6 +8,7 @@ module.exports = {
         gray900: "#1F2933",
         navy: "#0a192f",
         green: "#ffd074",
+        mainbackground: "#1f2933",
       },
     },
   },
