@@ -1,8 +1,8 @@
 <script>
   import { onMount } from "svelte";
-  import HackerText from "$lib/utils/HackerText";
   import carousel from "$lib/utils/Typewriter";
   import MagicButton from "$lib/MagicButton.svelte";
+  import { scrollRef, scrollTop } from "svelte-scrolling";
 
   const carouselText = [
     "Full-Stack Developer",
@@ -20,20 +20,32 @@
 <div id="blur" />
 <div id="blob" />
 <section
-  class="text-white text-4xl max-w-4xl relative z-50 mx-auto my-0 flex justify-center content-start flex-col h-screen"
+  class="text-white text-xl md:text-4xl max-w-xs md:max-w-2xl lg:max-w-4xl relative z-50 mx-auto my-0 flex justify-center content-start flex-col h-screen min-h-screen"
 >
   <h2 class="text-green text-xl">Hi, my name is</h2>
-  <h1 class="pt-5 text-gray-200">
-    Domenic Walther. <span class="wave">👋</span>
+  <h1 class="pt-4 md:pt-14 text-gray-200 big-heading">
+    Domenic Walther. <span class="wave text-xl md:text-7xl">👋</span>
   </h1>
-  <span
+  <span class="text-2xl big-heading py-5 font-bold text-gray-200"
     >A <span id="feature-text" />
     <div class="input-cursor" /></span
   >
-  <p class="text-lg text-gray-400">Some random fun text.</p>
+  <p class="text-lg text-gray-400">
+    As a Frontend Developer and Python Programmer, I'm always on the lookout for
+    fresh opportunities to hone my craft and tackle new challenges. My unbridled
+    passion for technology drives me to stay abreast of the latest industry
+    trends and developments.
+  </p>
   <div class="pt-10">
     <MagicButton />
   </div>
+</section>
+<section
+  class="max-w-4xl relative top-0 z-50 mx-auto my-0 flex content-start flex-col h-screen"
+  id="work"
+  use:scrollRef={"work"}
+>
+  <div class="text-4xl">About Me</div>
 </section>
 
 <style lang="scss">
@@ -48,7 +60,7 @@
     background-color: white;
     height: 34vmax;
     aspect-ratio: 1;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     translate: -50% -50%;
@@ -61,9 +73,14 @@
   #blur {
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     backdrop-filter: blur(12vmax);
+  }
+
+  .big-heading {
+    font-size: clamp(20px, 8vw, 80px);
+    line-height: clamp(40px, 8vw, 80px);
   }
 
   section {
@@ -81,9 +98,8 @@
   .input-cursor {
     display: inline-block;
     width: 2px;
-    height: 2rem;
+    height: clamp(40px, 8vw, 80px);
     background-color: white;
-    margin-left: 8px;
     transform: translatey(3px);
     animation: blink 0.6s linear infinite alternate;
   }
