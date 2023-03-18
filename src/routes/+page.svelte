@@ -46,6 +46,31 @@
   use:scrollRef={"work"}
 >
   <div class="text-4xl">About Me</div>
+  <div>
+    I'm 23 years old and based near Würzburg, Germany. My passion for technology
+    and its application motivates me to explore new possibilities and develop
+    innovative solutions.
+  </div>
+  <div>
+    As an enthusiastic web developer with a strong interest in technology and
+    its application, my journey in the industry began in 2014 when I completed
+    an internship at an advertising agency. Since then, I have continously
+    improved my skills by occasionally developing small projects, such as a
+    mini-spotlight clone for Windows.
+  </div>
+  <div>
+    Currently, I am working on creating Software for my current company,
+    including automating the process of storing images and a local task list
+    that the entire team can access on the network to organize tasks more
+    efficiently. This has further improved my skills in front-end and back-end
+    development.
+  </div>
+  <div>
+    I love to learn new things and constantly expand my skills. It's important
+    for me to feel like I've progressed every day. As a motivated and dedicated
+    developer, I'm ready to apply my knowledge and skills to new projects and
+    challenges.
+  </div>
 </section>
 
 <style lang="scss">
